@@ -8,6 +8,10 @@ const nextConfig: NextConfig = {
       "*.css": { loaders: ["@tailwindcss/turbopack"], as: "*.css" },
     },
   },
+  // El login es único: enlaces viejos al login de admin van al del portal.
+  async redirects() {
+    return [{ source: "/admin/login", destination: "/portal", permanent: true }];
+  },
   async headers() {
     return [
       {

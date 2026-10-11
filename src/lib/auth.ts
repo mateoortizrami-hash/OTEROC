@@ -28,7 +28,7 @@ export async function getCurrentProfile() {
 
 export async function requireAdmin() {
   const { supabase, profile } = await getCurrentProfile();
-  if (!profile) redirect("/admin/login");
+  if (!profile) redirect("/portal");
   if (profile.role !== "admin") redirect("/portal/certificados");
   return { supabase, profile };
 }

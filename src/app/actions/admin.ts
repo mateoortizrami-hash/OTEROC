@@ -38,21 +38,11 @@ async function signInWithPassword(formData: FormData) {
   return { supabase, role: profile.role as "admin" | "client" };
 }
 
-/** Login del portal del cliente. Si entra el admin, lo lleva a su panel. */
+/** Único login del sitio: clientes van a sus certificados y el admin a su panel. */
 export async function signInClient(_prev: ActionState, formData: FormData): Promise<ActionState> {
   const result = await signInWithPassword(formData);
   if ("error" in result) return { error: result.error };
   redirect(result.role === "admin" ? "/admin" : "/portal/certificados");
-}
-
-export async function signInAdmin(_prev: ActionState, formData: FormData): Promise<ActionState> {
-  const result = await signInWithPassword(formData);
-  if ("error" in result) return { error: result.error };
-  if (result.role !== "admin") {
-    await result.supabase.auth.signOut();
-    return { error: INVALID_CREDENTIALS };
-  }
-  redirect("/admin");
 }
 
 /** Registro libre de clientes. Requiere "Confirm email" desactivado en Supabase. */

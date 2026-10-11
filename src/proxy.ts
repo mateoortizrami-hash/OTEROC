@@ -7,12 +7,11 @@ export async function proxy(request: NextRequest) {
   const { response, isAuthenticated } = await updateSession(request);
   const { pathname } = request.nextUrl;
 
-  const isAdminArea = pathname.startsWith("/admin") && pathname !== "/admin/login";
+  const isAdminArea = pathname.startsWith("/admin");
   const isClientArea = pathname.startsWith("/portal/") && pathname !== "/portal/registro";
 
   if (!isAuthenticated && (isAdminArea || isClientArea)) {
-    const loginPath = isAdminArea ? "/admin/login" : "/portal";
-    return NextResponse.redirect(new URL(loginPath, request.url));
+    return NextResponse.redirect(new URL("/portal", request.url));
   }
 
   return response;

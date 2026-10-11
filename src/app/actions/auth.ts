@@ -3,8 +3,8 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 
-export async function signOut(formData: FormData) {
+export async function signOut() {
   const supabase = await createClient();
   await supabase.auth.signOut();
-  redirect(formData.get("to") === "/admin/login" ? "/admin/login" : "/portal");
+  redirect("/portal");
 }

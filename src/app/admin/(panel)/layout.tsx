@@ -17,7 +17,6 @@ export default async function AdminPanelLayout({ children }: { children: React.R
           <div className="flex items-center gap-4 text-sm">
             <span className="hidden text-slate-500 sm:inline">{profile.email}</span>
             <form action={signOut}>
-              <input type="hidden" name="to" value="/admin/login" />
               <button className="font-medium text-slate-600 hover:text-brand-700">Cerrar sesión</button>
             </form>
           </div>

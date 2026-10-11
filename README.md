@@ -10,7 +10,7 @@ Sitio corporativo (inicio, políticas y contacto) con un **portal del cliente** 
 |---|---|---|
 | Visitante | Público | Ver inicio, políticas y contacto |
 | Cliente | `/portal/registro` para crear cuenta y `/portal` para ingresar, con correo y contraseña | Ya aprobado: ver, buscar y descargar todos los certificados |
-| Admin | `/admin/login` (o `/portal`), con correo y contraseña | Cargar y eliminar certificados, aprobar o revocar cuentas, restablecer contraseñas, eliminar cuentas |
+| Admin | `/portal` (el mismo login; el sistema lo lleva a `/admin`), con correo y contraseña | Cargar y eliminar certificados, aprobar o revocar cuentas, restablecer contraseñas, eliminar cuentas |
 
 - **Registro libre, sin correos:** la cuenta queda creada al instante y la app no envía correos. Una cuenta nueva queda **pendiente** y no ve ningún certificado.
 - **Aprobación:** el panel del admin muestra las cuentas pendientes. Antes de aprobar, el admin confirma (por teléfono o WhatsApp) que es un cliente real, porque una cuenta aprobada ve **todo** el inventario. El acceso se puede revocar en cualquier momento.
