@@ -56,7 +56,7 @@ supabase/
    2. Edita `supabase/seed_admin.sql` con ese correo y ejecútalo en el SQL Editor.
 5. En **Project Settings → API Keys**, copia la URL, la *publishable key* y la *secret key*.
 
-> **Pausa por inactividad:** el plan gratuito pausa el proyecto tras 7 días sin actividad. Se reactiva desde el panel de Supabase.
+> **Pausa por inactividad:** el plan gratuito de Supabase pausa el proyecto tras 7 días sin actividad. Para evitarlo, `vercel.json` programa una tarea diaria (Vercel Cron, 8:00 a. m. hora Colombia) que llama a `/api/keep-alive` y hace una consulta mínima. Configura `CRON_SECRET` en Vercel para que solo Vercel pueda llamarla. Si aun así se pausa, se reactiva desde el panel de Supabase.
 
 ### 2. Local
 
@@ -69,7 +69,7 @@ npm run dev                  # http://localhost:3000
 ### 3. Vercel
 
 1. Sube el repositorio a GitHub e impórtalo en Vercel.
-2. Configura las variables de `.env.example` en **Settings → Environment Variables**. `NEXT_PUBLIC_SITE_URL` debe ser el dominio final.
+2. Configura las variables de `.env.example` en **Settings → Environment Variables**, incluida `CRON_SECRET` (un texto aleatorio largo). `NEXT_PUBLIC_SITE_URL` debe ser el dominio final.
 
 ## Seguridad: puntos clave
 
